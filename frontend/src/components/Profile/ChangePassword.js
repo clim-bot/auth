@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { changePassword } from '../../api/auth';
-import '../../styles/styles.css';
+import { useNavigate } from 'react-router-dom';
 
 const ChangePassword = () => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     const handleChangePassword = async (e) => {
         e.preventDefault();
@@ -18,6 +19,7 @@ const ChangePassword = () => {
             const token = localStorage.getItem('token');
             await changePassword(token, { oldPassword, newPassword, confirmPassword });
             alert('Password changed successfully!');
+            navigate('/profile');
         } catch (error) {
             alert('Error: ' + error.response.data.error);
         }

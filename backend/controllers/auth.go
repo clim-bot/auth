@@ -51,6 +51,7 @@ func Register(c *gin.Context) {
     user.Activated = false
 
     if err := config.DB.Create(&user).Error; err != nil {
+		log.Printf("Database error: %v", err)
         if strings.Contains(err.Error(), "UNIQUE constraint failed") {
             c.JSON(http.StatusBadRequest, gin.H{"error": "Email is already registered"})
         } else {
@@ -87,8 +88,12 @@ func sendActivationEmail(email, activationLink string) error {
 
     auth := smtp.PlainAuth("", from, password, smtpHost)
     err := smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, message)
+    if err != nil {
+        log.Printf("Failed to send activation email: %v", err)
+    }
     return err
 }
+
 
 func ActivateAccount(c *gin.Context) {
     var req struct {
