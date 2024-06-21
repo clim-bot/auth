@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getProfile } from '../../api/auth';
+import '../../styles/styles.css';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -28,14 +29,16 @@ const Profile = () => {
     };
 
     return (
-        <div className="container">
+        <div className="profile-container">
             {user && (
-                <div>
-                    <h2>Profile</h2>
-                    <p>Name: {user.name}</p>
-                    <p>Email: {user.email}</p>
-                    <button onClick={handleLogout}>Logout</button>
-                    <button onClick={handleChangePassword}>Update Password</button>
+                <div className="profile-card">
+                    <h2 className="profile-heading">Profile</h2>
+                    <p className="profile-item"><strong>Name:</strong> {user.name}</p>
+                    <p className="profile-item"><strong>Email:</strong> {user.email}</p>
+                    <div className="profile-actions">
+                        <button className="btn-primary" onClick={handleLogout}>Logout</button>
+                        <button className="btn-secondary" onClick={handleChangePassword}>Update Password</button>
+                    </div>
                 </div>
             )}
         </div>

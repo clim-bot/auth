@@ -10,3 +10,12 @@ git add your_folder_with_repo/
 git commit -m "Add folder"
 git push
 ```
+
+## Usage
+Run the MailHog:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+1. The MailHog server will start on `http://localhost:1025`.

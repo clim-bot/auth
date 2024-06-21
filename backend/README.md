@@ -28,12 +28,11 @@ This is the backend part of the Authentication App built with Go, Gin, Gorm, and
 1. Run the application:
 
     ```bash
-    docker-compose up --build
+    go run .
     ```
 
 2. The server will start on `http://localhost:8080`.
 
-3. The MailHog server will start on `http://localhost:1025`.
 
 ## Project Structure
 

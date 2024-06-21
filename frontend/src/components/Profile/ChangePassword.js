@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { changePassword } from '../../api/auth';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/styles.css';
 
 const ChangePassword = () => {
     const [oldPassword, setOldPassword] = useState('');
